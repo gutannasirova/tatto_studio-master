@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <section id="registration">
+        <div class="container">
+            <header>
+                <div class="burger">
+                    <div class="logo">
+                        <img src="./images/logo.png" alt="logotip">
+                    </div>
+                    <button class="burger-menu" onclick="toggleMenu()">☰</button>
+                </div>
+
+                <!-- Панель бургер-меню -->
+                <div class="sidebar" id="sidebar">
+                     <button class="close-button" onclick="toggleMenu()">✕</button>
+                    <ul class="sidebar-menu">
+                        <li><a href="index.html#our_services">Услуги</a></li>
+                        <li><a href="index.html#our_masters">Команда</a></li>
+                        <li><a href="index.html#reviews">Отзывы</a></li>
+                        <li><a href="index.html#contacts">Контакты</a></li>
+                        <li><a href="index.htmlportfolio.html">Портфолио</a></li>
+                    </ul>
+                    
+                    <div class="sidebar-chat">
+                        <div class="chat-header">Чат с нами</div>
+                        <div class="chat-messages">
+                            <p>Здравствуйте! Чем могу помочь?</p>
+                        </div>
+                        <input type="text" class="chat-input" placeholder="Ваш вопрос...">
+                    </div>
+                    <div class="sidebar-contacts">
+                        <p>Телефон: 8-921-448-88-97</p>
+                    </div>
+                    <a href="registration.html" class="button sidebar-button">Записаться</a>
+
+                    <div class="sidebar-footer">
+                        <img src="./images/Group 26.png" alt="footer-icons">
+                    </div>
+                </div>
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="index.html#our_services">Услуги</a></li>
+                            <li><a href="index.html#our_masters">Команда</a></li>
+                            <li><a href="index.html#reviews">Отзывы</a></li>
+                            <li><a href="index.html#contacts">Контакты</a></li>
+                            <li><a href="index.htmlportfolio.html">Портфолио</a></li>
+                    </ul>
+                </nav>
+
+            </header>
+
+            <script>
+                function toggleMenu() {
+                    const menu = document.getElementById('mobileMenu');
+                    menu.classList.toggle('active');
+                }
+            </script>
+        </div>
+    </section>
+
+    <section class="more_details">
+        <div class="more">
+            <div class="container">
+                <h6>Подробнее</h6>
+
+                <div class="content">
+                    <img src="./images/more.png" alt="" class="mobile_img_more">
+                    <div class="text">
+                        <h4>Консультация</h4>
+                        <p>На консультации вы сможете обсудить свои идеи<br> и пожелания с мастером. Это важный этап,
+                            который<br>
+                            поможет определить стиль, размер и расположение <br> татуировки. Мастера предоставят
+                            рекомендации
+                            и<br>
+                            помогут выбрать подходящий эскиз, учитывая ваши <br> предпочтения и особенности кожи.</p>
+
+                        <div class="price_button">
+                            <a href="registration.html" class="button">Записаться</a>
+                            <p>Бесплатно</p>
+                        </div>
+
+                    </div>
+
+                    <img src="./images/more.png" alt="" class="desktop_img_more" >
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+        document.addEventListener('click', function (event) {
+            const sidebar = document.getElementById('sidebar');
+            const burgerMenu = document.querySelector('.burger-menu');
+
+            if (!sidebar.contains(event.target) && !burgerMenu.contains(event.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+
+
+    <script>
+        function toggleDropdown(id) {
+            const content = document.getElementById(id);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        }
+    </script>
+       <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+    <script>
+        const chatInput = document.querySelector('.chat-input');
+        const chatMessages = document.querySelector('.chat-messages');
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const userMessage = chatInput.value;
+                chatMessages.innerHTML += `<p><strong>Вы:</strong> ${userMessage}</p>`;
+                chatInput.value = '';
+
+                // Ответ от бота
+                setTimeout(() => {
+                    chatMessages.innerHTML += `<p><strong>Бот:</strong> Спасибо за вопрос! Мы скоро ответим.</p>`;
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+
+</html>

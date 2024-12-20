@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section id="registration">
+        <div class="container">
+            <header>
+                <div class="burger">
+                    <div class="logo">
+                        <img src="./images/logo.png" alt="logotip">
+                    </div>
+                    <button class="burger-menu" onclick="toggleMenu()">☰</button>
+                </div>
+
+                <!-- Панель бургер-меню -->
+                <div class="sidebar" id="sidebar">
+                    <button class="close-button" onclick="toggleMenu()">✕</button>
+                    <ul class="sidebar-menu">
+                        <li><a href="index.html#our_services">Услуги</a></li>
+                        <li><a href="index.html#our_masters">Команда</a></li>
+                        <li><a href="index.html#reviews">Отзывы</a></li>
+                        <li><a href="index.html#contacts">Контакты</a></li>
+                        <li><a href="index.htmlportfolio.html">Портфолио</a></li>
+                    </ul>
+
+                    <div class="sidebar-chat">
+                        <div class="chat-header">Чат с нами</div>
+                        <div class="chat-messages">
+                            <p>Здравствуйте! Чем могу помочь?</p>
+                        </div>
+                        <input type="text" class="chat-input" placeholder="Ваш вопрос...">
+                    </div>
+                    <div class="sidebar-contacts">
+                        <p>Телефон: 8-921-448-88-97</p>
+                    </div>
+                    <a href="registration.html" class="button sidebar-button">Записаться</a>
+
+                    <div class="sidebar-footer">
+                        <img src="./images/Group 26.png" alt="footer-icons">
+                    </div>
+                </div>
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="index.html#our_services">Услуги</a></li>
+                        <li><a href="index.html#our_masters">Команда</a></li>
+                        <li><a href="index.html#reviews">Отзывы</a></li>
+                        <li><a href="index.html#contacts">Контакты</a></li>
+                        <li><a href="index.htmlportfolio.html">Портфолио</a></li>
+                    </ul>
+                </nav>
+
+            </header>
+
+            <script>
+                function toggleMenu() {
+                    const menu = document.getElementById('mobileMenu');
+                    menu.classList.toggle('active');
+                }
+            </script>
+        </div>
+    </section>
+
+    <section id="registration_desc">
+        <div class="container">
+            <div class="registration_desc">
+                <h6>Запись на сеанс</h6>
+                <p>Мы всегда рады приветствовать Вас в нашей студии!<br> Оставьте заявку и мы ответим Вам в ближайшее
+                    время.
+                </p>
+            </div>
+
+            <div class="registration_all">
+                <div class="registration_form">
+                    <input type="text" id="name" placeholder="Ваше имя" required>
+                    <input type="tel" id="phone" placeholder="Ваш номер телефона" required>
+                    <select id="master" required>
+                        <option value="" disabled selected>Выберите мастера</option>
+                        <option value="marina">Марина Петрова</option>
+                        <option value="katerina">Катерина Иванова</option>
+                        <option value="sofia">София Кузнецова</option>
+                    </select>
+                    <select id="service" required>
+                        <option value="" disabled selected>Выберите услугу</option>
+                        <option value="tattoo">Нанесение татуировки</option>
+                        <option value="piercing">Пирсинг</option>
+                        <option value="removal">Снятие татуировки</option>
+                        <option value="correction">Коррекция татуировки</option>
+                        <option value="consultation">Консультация</option>
+                        <option value="sketch">Разработка эскизов</option>
+                    </select>
+                    <button type="submit" onclick="submitForm()">Отправить</button>
+                    <div id="successMessage" class="success-message" style="display: none;">Заявка успешно отправлена!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function submitForm() {
+            // Получаем значения полей ввода
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const master = document.getElementById('master').value;
+            const service = document.getElementById('service').value;
+
+            // Проверяем, что поля не пустые
+            if (!name || !phone || !master || !service) {
+                alert('Пожалуйста, заполните все поля.');
+                return;
+            }
+
+            // Проверка имени (только буквы и пробелы)
+            const namePattern = /^[A-Za-zА-Яа-я\s]+$/;
+            if (!namePattern.test(name)) {
+                alert('Имя должно содержать только буквы и пробелы.');
+                return;
+            }
+
+            // Проверка номера телефона (пример: +7 (123) 456-78-90)
+            const phonePattern = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
+            if (!phonePattern.test(phone)) {
+                alert('Пожалуйста, введите номер телефона в формате +7 (123) 456-78-90.');
+                return;
+            }
+
+            // Если все проверки пройдены, показываем сообщение об успешной отправке
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+
+            // Очищаем поля ввода
+            document.getElementById('name').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('master').value = '';
+            document.getElementById('service').value = '';
+
+            // Скрываем сообщение через 3 секунды
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+        document.addEventListener('click', function (event) {
+            const sidebar = document.getElementById('sidebar');
+            const burgerMenu = document.querySelector('.burger-menu');
+
+            if (!sidebar.contains(event.target) && !burgerMenu.contains(event.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+
+
+    <script>
+        function toggleDropdown(id) {
+            const content = document.getElementById(id);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        }
+    </script>
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+    <script>
+        const chatInput = document.querySelector('.chat-input');
+        const chatMessages = document.querySelector('.chat-messages');
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const userMessage = chatInput.value;
+                chatMessages.innerHTML += `<p><strong>Вы:</strong> ${userMessage}</p>`;
+                chatInput.value = '';
+
+                // Ответ от бота
+                setTimeout(() => {
+                    chatMessages.innerHTML += `<p><strong>Бот:</strong> Спасибо за вопрос! Мы скоро ответим.</p>`;
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+
+</html>
